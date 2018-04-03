@@ -119,6 +119,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Main.c" />
+    <ClCompile Include="sparse.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sparse.h" />
