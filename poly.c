@@ -45,7 +45,6 @@ Poly polyCalc(Poly alpha, Poly beta, int sign) {
 	}
 	return result;
 }
-
 //리스트 다항식 계산기.
 List_poly polyCalc2(List_poly *poly1, List_poly *poly2, int sign) {
 	List_poly result;
@@ -118,7 +117,6 @@ List_poly polyCalc2(List_poly *poly1, List_poly *poly2, int sign) {
 void initPoly(List_poly *poly, int size) {
 	poly->starter = NULL;
 }
-
 void addData(List_poly *poly, int coef, int degree) {
 	Polydata* newpoly;
 
@@ -139,7 +137,6 @@ void addData(List_poly *poly, int coef, int degree) {
 	}
 
 }
-
 void printPoly2(List_poly* list) {
 	Polydata* i;
 	printf("\n");
@@ -162,7 +159,6 @@ void printPoly2(List_poly* list) {
 	}
 	printf("\n\n");
 }
-
 void printPoly(Poly result) {
 	int increase = 0;
 

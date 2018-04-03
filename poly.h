@@ -10,7 +10,6 @@ typedef struct polynomial {
 	float data[MAX_DEGREE];
 } Poly;
 
-
 typedef struct list_poly{
 	struct polydata* starter;
 } List_poly;
@@ -25,7 +24,5 @@ Poly polyCalc(Poly alpha, Poly beta, int sign);
 List_poly polyCalc2(List_poly *poly1, List_poly *poly2, int sign);
 void printPoly(Poly result);
 void printPoly2(List_poly* list);
-void selection_sort(int* list[]);
-
 void initPoly(List_poly *poly, int size);
 void addData(List_poly *poly, int coef, int degree);
