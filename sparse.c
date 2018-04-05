@@ -42,6 +42,7 @@ void addData(Matrix* matrix, int x_data, int y_data, int value, int way) {
 	}
 }
 
+// 희소 행렬을 만들어 주는 함수.
 int** createMatrix(int input) {
 	int size = input;
 	Sleep(1000);		// srand()함수가 시간 값을 바탕으로 난수를 생성하는데, 
@@ -64,6 +65,7 @@ int** createMatrix(int input) {
 	return sparse_matrix;
 }
 
+// 희소 행렬을 free시키는 함수.
 void freeMatrix(int** matrix, int size) {
 	for (int i = 0; i < size; i++) {
 		free(matrix[i]);
@@ -71,6 +73,7 @@ void freeMatrix(int** matrix, int size) {
 	free(matrix);
 }
 
+// 매트릭스(희소 행렬의 요소 값들에 대한 리스트)를 출력하는 함수
 void printMatrix(Matrix* matrix, int size) {
 	Sparse* i;
 	int temp = matrix->starter->x;						// 배열의 자릿수를 맞추기 위해 x 인덱스를 기억할 변수
@@ -85,10 +88,12 @@ void printMatrix(Matrix* matrix, int size) {
 	printf("\n\n");
 }
 
+// 매트릭스 초기화 함수
 void init(Matrix* matrix) {
 	matrix->starter = NULL;
 }
 
+// 희소행렬의 쓸모있는 값들을 매트릭스에 추가하는 함수.
 void copyData(Matrix* matrix, int** sparse_matrix, int size) {
 	for (int i = 0; i < size; i++) {
 		for (int j = 0; j < size; j++) {
@@ -99,6 +104,7 @@ void copyData(Matrix* matrix, int** sparse_matrix, int size) {
 	}
 }
 
+// 매트릭스(희소 행렬의 요소) 간의 산술 연산을 수행하는 함수.
 Matrix calcSparse(Matrix* matrix1, Matrix* matrix2, int way) {
 	Matrix result;
 	init(&result);
@@ -191,3 +197,4 @@ Matrix calcSparse(Matrix* matrix1, Matrix* matrix2, int way) {
 	}
 	return result;
 }
+

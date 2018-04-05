@@ -15,5 +15,6 @@ typedef struct list {
 
 void init(List* list);
 Node* newNode(int data);
-void addNode(List* list, int data);
+void addNode(List* list, int data, int way);
 void printList(List* list);
+void removeNode(List* list);

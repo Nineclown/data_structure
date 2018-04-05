@@ -15,17 +15,39 @@ Node* newNode(int data) {
 	return node; //주소를 뱉는다.
 }
 
-void addNode(List* list, int data) {
+void addNode(List* list, int data, int way) {
 	//새로운 노드와 함수 호출동안 사용할 임시 그릇을 생성.
-	Node* temp = (Node*)malloc(sizeof(Node));
 	Node* node = newNode(data);
 
-	//starter가 가리키던 노드를 그릇에 담고, 새 노드와 starter를 연결
-	temp->next = list->starter;
-	list->starter = node;
-	node->next = temp->next;
-	list->size++;
-	free(temp);
+	Node* temp;
+	temp = list->starter;
+
+	if (1 == way) {
+		//starter가 가리키던 노드를 그릇에 담고, 새 노드와 starter를 연결
+		if (NULL == temp) {
+			list->starter = node;
+			list->size++;
+		}
+		else {
+			list->starter = node;
+			node->next = temp;
+			list->size++;
+		}
+	}
+	else if (-1 == way) {
+		if (NULL == temp) {
+			list->starter = node;
+			list->size++;
+		}
+		else {
+			while (NULL != temp->next) {
+				temp = temp->next;
+			}
+			temp->next = node;
+			list->size++;
+		}
+	}
+	
 }
 
 
@@ -48,11 +70,10 @@ void removeNode(List* list) {
 	}
 	else {
 		printf("[00]: %d 를 삭제 합니다.\n", list->starter->element);
-		Node* temp = (Node*)malloc(sizeof(Node));
-		temp->next = list->starter->next;
+		Node* temp;
+		temp = list->starter->next;
 		free(list->starter);
-		list->starter = temp->next;
-		free(temp);
+		list->starter = temp;
 		printf("삭제 되었습니다.\n");
 	}
 }

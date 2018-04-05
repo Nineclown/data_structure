@@ -1,8 +1,55 @@
 #include <stdio.h>
-#include "sparse.h"
+#include <stdlib.h>
+#include <string.h>
+#include "list.h"
 
 int main() {
-	int size;
+
+
+	//선언부.
+	List list; //단순 연결 리스트.
+	char* input;//사용자가 사용할 메뉴를 담을 변수.
+	int data;//노드에 들어갈 데이터를 사용자로부터 입력 받을 변수.
+	input = malloc(sizeof(char) * 4);
+
+	init(&list);//list 초기화.
+
+	while (1) {
+		//메뉴창.
+		printf("===================[Linked list]===================\n");
+		printf("=    리스트 확인(0).추가(1).삭제(2).종료(quit)    =\n");
+		printf("===================================================\n");
+
+		//입력.
+		scanf_s("%s", input, 10);
+
+		//리스트 출력.
+		if (!strcmp(input, "0")) {
+			printList(&list);
+		}
+		//리스트에 데이터 추가.
+		else if (!strcmp(input, "1")) {
+			printf("추가할 데이터를 입력하세요: ");
+			scanf_s("%d", &data);
+			addNode(&list, data, -1);
+		}
+		//리스트의 데이터 삭제.
+		else if (!strcmp(input, "2")) {
+			removeNode(&list);
+		}
+		//프로그램 종료.
+		else if (!strcmp(input, "quit")) {
+			return 0;
+		}
+		//간단한 예외 처리.
+		else {
+			printf("잘 못 입력하셨어요\n");
+			return 0;
+		}
+	}
+}
+	/*[희소행렬 구하기]
+		int size;
 	int **sparse_matrix1, **sparse_matrix2;	//희소행렬 선언.
 	
 	//희소행렬 만들기.
@@ -29,12 +76,8 @@ int main() {
 		printMatrix(&result, size);
 	}
 }
-
-
-
-
-
-
+	*/
+	
 /*[배열로 만든 다항식 계산 프로그램]
 	Poly a, b, c;// 다항식.
 	char* input;// 사용자가 사용할 메뉴를 담을 변수.
